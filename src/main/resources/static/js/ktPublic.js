@@ -92,11 +92,13 @@ function autoPushLink() {
 /**
  * 发表评论
  */
-function addComment() {
+function addComment(isAsc) {
     var commentContext = $('#commentContext').val();
     var $cl = $('.gitment-comments-list');
     if (commentContext) {
-
+        if (isAsc) {
+            commentContext = '```\n' + commentContext + '\n```';
+        }
         // 将评论内容转化成html
         var htmlContext = ktUtils.makeHtml(commentContext);
         // log('htmlContext=', htmlContext);

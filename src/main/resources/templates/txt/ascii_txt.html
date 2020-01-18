@@ -161,7 +161,17 @@
                 '                                                  ';
             $('#comment').text(defaultAscii);
 
-            $('.gitment-editor-footer-tip').after('<span style="font-size: 12px;color: red;"> (提示：发表ASCII字体可在它前一行及后一行使用三个反引号 ```【&lt;——复制它】包裹起来)</span>');
+            $('.gitment-editor-footer button').remove();
+
+            var addHtml = '<div style="float: right;">\n' +
+                '<div style="float: left;margin-top: 8px;margin-right: 12px;">\n' +
+                '<input type="checkbox" id="isAsc" value="1">ASCII字体(只有勾选此项，才能正确发表ASCII字体)\n' +
+                '</div>\n' +
+                '<button class="gitment-editor-submit" onclick="addComment($(\'#isAsc\').is(\':checked\'))" title="发表评论">评论</button>\n' +
+                '</div>\n';
+
+            // $('.gitment-editor-footer-tip').after('<span style="font-size: 12px;color: red;"> (提示：发表ASCII字体可在它前一行及后一行使用三个反引号 ```【&lt;——复制它】包裹起来)</span>');
+            $('.gitment-editor-footer-tip').after(addHtml);
         }
 
     });

@@ -36,7 +36,7 @@
     <!--Ktools导航栏-->
     <nav th:fragment="navbar" th:with="ctx=${#httpServletRequest.getContextPath()}" class="navbar navbar-expand-sm bg-secondary navbar-dark" style="background-color: #0068a1!important;padding-top:0;padding-bottom: 0;">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" th:href="@{/}">
             <img th:src="@{/static/favicon.ico}" width="30" height="30" class="d-inline-block align-top glyphicon glyphicon-briefcase" alt="">
         </a>
 

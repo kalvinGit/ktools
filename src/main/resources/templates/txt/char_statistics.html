@@ -44,12 +44,12 @@
                 <div class="col-sm-6 mt-3">
                     <label class="kt-fc-title">字符统计分析结果:</label>
                     <div class="row" style="height: 254px; border: 1px solid #ced4da">
-                        <div id="total" class="col-sm-12" style="margin-top: 15px;">总字符个数：0</div>
-                        <div id="char" class="col-sm-12">中文字符个数：0</div>
-                        <div id="letter" class="col-sm-12">英文/字母字符个数：0</div>
-                        <div id="number" class="col-sm-12">数字字符个数：0</div>
-                        <div id="blank" class="col-sm-12">空格字符个数：0</div>
-                        <div id="other" class="col-sm-12">其它字符个数：0</div>
+                        <div id="total" class="col-sm-12" style="margin-top: 15px;">总字符个数：<span class="badge badge-danger">0</span></div>
+                        <div id="char" class="col-sm-12">中文字符个数：<span class="badge badge-primary">0</span></div>
+                        <div id="letter" class="col-sm-12">英文/字母字符个数：<span class="badge badge-success">0</span></div>
+                        <div id="number" class="col-sm-12">数字字符个数：<span class="badge badge-dark">0</span></div>
+                        <div id="blank" class="col-sm-12">空格字符个数：<span class="badge badge-info">0</span></div>
+                        <div id="other" class="col-sm-12">其它字符个数：<span class="badge badge-warning">0</span></div>
                     </div>
                 </div>
             </div>
@@ -106,8 +106,8 @@
          */
         function charStatistics(str) {
             // 所有字符总个数
-            var allCharLen = str.length || 0;
-            $('#total').text('总字符个数：' + allCharLen);
+            var allCharLen = str.length || '0';
+            $('#total span').text(allCharLen);
 
             // 空格字符个数
             var blankLen = 0;
@@ -115,28 +115,28 @@
             $.each(blankArr, function (i, item) {
                 blankLen += item.length
             });
-            $('#blank').text('空格字符个数：' + blankLen);
+            $('#blank span').text(blankLen);
 
             // 英文/字母字符个数
             var letterArr = str.match(/[A-Za-z]/g) || [];
             var letterLen = letterArr.length;
-            $('#letter').text('英文/字母字符个数：' + letterLen);
+            $('#letter span').text(letterLen);
 
             // 数字字符个数
             var numberArr = str.match(/[0-9]/g) || [];
             var numberLen = numberArr.length;
-            $('#number').text('数字字符个数：' + numberLen);
+            $('#number span').text(numberLen);
             // 中文字符个数
             var charLen = 0;
             var charArr = str.match(/[\u4e00-\u9fa5]+/g) || [];
             $.each(charArr, function (i, item) {
                 charLen += item.length
             });
-            $('#char').text('中文字符个数：' + charLen);
+            $('#char span').text(charLen);
 
             // 其它字符个数
             var otherLen = Number(allCharLen) - Number(blankLen) - Number(letterLen) - Number(numberLen) - Number(charLen);
-            $('#other').text('其它字符个数：' + otherLen);
+            $('#other span').text(otherLen);
 
             // str = str.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\、|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,"");
             // log('rep=', str)
