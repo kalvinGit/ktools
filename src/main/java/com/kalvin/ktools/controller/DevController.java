@@ -93,6 +93,9 @@ public class DevController {
         if (stressTestingVO.getConcurrent() > 300) { // 并发数最大限制300
             stressTestingVO.setConcurrent(300);
         }
+        if (stressTestingVO.getReps() > 35) {
+            stressTestingVO.setReps(35);
+        }
         String post = KApiKit.post(kApi.getDevStressTestingUrl(), BeanUtil.beanToMap(stressTestingVO), reqToken);
 //        LOGGER.info("post={}", post);
         return KApiKit.respone2R(post);

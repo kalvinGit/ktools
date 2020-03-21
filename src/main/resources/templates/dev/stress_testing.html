@@ -48,7 +48,7 @@
                     <div class="col-sm-12 mt-lg-4">
                         <div class="form-group">
                             <label for="urls">url地址：<small style="color: #ccc;">例：http://www.xxx.com</small></label>
-                            <textarea class="form-control" required rows="4" id="urls" name="urls" placeholder="压测url地址，多个url使用回车换行；注意地址后面不要带参数。"></textarea>
+                            <textarea class="form-control" required rows="4" id="urls" name="urls" placeholder="1.压测url地址，多个url使用回车换行；注意地址后面不要带参数。2.url必须能被外网访问；3.不要使用访问过慢的url"></textarea>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -76,7 +76,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">重复次数:</span>
                             </div>
-                            <input type="text" value="5" class="form-control" id="reps" name="reps">
+                            <input type="text" value="5" class="form-control" id="reps" name="reps" data-toggle="popover" title="说明" data-content="为提高成功率(最大限制35)" data-trigger="hover" data-placement="top">
                         </div>
                     </div>
                     <div class="col-sm-3">
