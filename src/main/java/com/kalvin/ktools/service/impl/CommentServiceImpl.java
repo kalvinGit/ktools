@@ -92,6 +92,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentDao, Comment> impleme
 
     @Override
     public Comment addComment(Comment comment) {
+        final String[] keywords = new String[]{"script", "style", "iframe", "html", "body", "img", "t66y.com", "object", "document.write", "document", "onload", "setTimeout", "alert", "frame", "location", "eval", "open", "setInterval", "src", "href", "video", "onerror"};
+        String comm = comment.getComment();
+
+        for (String keyword : keywords) {
+            comm = comm.replace(keyword, "?");
+        }
+
+        if (comment.getMenuId() != 8L) {
+            comm = comm.replace("<", "&lt;").replace(">", "&gt;");
+        }
+        comment.setComment(comm);
         super.save(comment);
         return comment;
     }
